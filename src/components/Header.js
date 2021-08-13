@@ -17,7 +17,7 @@ return(
 }
 
 Header.defaultProps={
-  title:'Título por defecto RICARDO'
+  title:'Título por defecto RICARDO L'
 }
 
 const headingStyle={
