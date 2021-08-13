@@ -6,23 +6,24 @@ import Tasks from './components/Tasks'
 import AddTask from './components/AddTask'
 
 function App() {
+  const [showAddTask, setShowAddTask]= useState(false)
 const [tasks, setTasks] = useState([
 {
   id:1,
   text:'Cita con el Doctor',
-  day: '25 de agosto 2021',
+  day: '25 de Agosto 2021',
   reminder: true
 },
 {
   id:2,
   text:'Videoconferencia ITA',
-  day: '3 de septiembre 2021',
+  day: '3 de Septiembre 2021',
   reminder: false
 },
 {
   id:3,
   text:'Entrega de Avance de Proyecto',
-  day: '15 de agosto 2021',
+  day: '15 de Agosto 2021',
   reminder: true
   }
 ])
@@ -39,8 +40,12 @@ const toggleReminder = (id) =>{
 }
 
 const addTask = (task) =>{
-   console.log(task);
+   //console.log(task);
+   const id = Math.floor(Math.random() * 10000) + 1
+   const newTask = {id, ...task}
+   setTasks([...tasks, newTask])
 }
+
 
 const nombre = 'Ricardo'
 const x = !true
@@ -48,10 +53,9 @@ const y = !false
 
   return (
     <div>
-    <Header title='Recordatorios' />
+    <Header title='Recordatorios' onAdd={() => setShowAddTask(!showAddTask)} showAdd={showAddTask} />
 
-    <AddTask onAdd={addTask} />
-
+    {showAddTask && <AddTask onAdd={addTask} />}
     <Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder} />
 
     </div>

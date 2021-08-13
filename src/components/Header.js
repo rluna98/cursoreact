@@ -10,14 +10,14 @@ return(
   <header className='header'>
   <h1>{props.title}</h1>
 
-  <Button onClick={onClick} text='Nuevo'/>
+  <Button text={props.showAdd ? 'x' : '+'} onClick={props.onAdd} />
 
   </header>
 )
 }
 
 Header.defaultProps={
-  title:'Título por defecto RICARDO L'
+  title:'Título por defecto'
 }
 
 const headingStyle={
@@ -27,3 +27,4 @@ backgroundColor:'black'
 
 
 export default Header
+
